@@ -5,16 +5,16 @@ newForm.loginFormCallback = data =>  {
      let login = data.login;
      let password = data.password;
      ApiConnector.login({login, password}, response =>{
+          console.log(response);
           if(response.success){
                location.reload();
           } else {
-               alert("Ошибка!")
+              newForm.setLoginErrorMessage(response.error);
           }
      })
 } 
 
-const registerForm = new UserForm();
-registerForm.registerFormCallback = data => {
+newForm.registerFormCallback = data => {
      console.log(data);
      let login = data.login;
      let password = data.password;
@@ -22,7 +22,7 @@ registerForm.registerFormCallback = data => {
           if(response.success){
                location.reload();
           } else {
-               alert("Ошибка!")
+               newForm.setRegisterErrorMessage(response.error);
           }
      })
 } 

@@ -71,6 +71,7 @@ newMoneyManager.sendMoneyCallback = data => {
 
 const newFavoritesWidget = new FavoritesWidget();
 ApiConnector.getFavorites(response => {
+    console.log(response);
     if(response.success){
         newFavoritesWidget.clearTable();
         newFavoritesWidget.fillTable(response.data);
@@ -81,8 +82,8 @@ ApiConnector.getFavorites(response => {
 newFavoritesWidget.addUserCallback = data => {
     console.log(data);
     let id = data.id;
-    let userLogin = data.name;
-    ApiConnector.addUserToFavorites({id, userLogin}, response => {
+    let name = data.name;
+    ApiConnector.addUserToFavorites({id, name}, response => {
         if(response.success){
             newFavoritesWidget.clearTable();
             newFavoritesWidget.fillTable(response.data);
